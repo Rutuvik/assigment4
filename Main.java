@@ -1,32 +1,30 @@
 package com.ineuron;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedHashSet;
 
-//WAP to find if String contains all unique character
-public class Main {
-    public static boolean hasUniqueCharacters(String str) {
-
-        Set<Character> uniqueChars = new HashSet<>();
-
-        for (char ch : str.toCharArray()) {
-
-            if (uniqueChars.contains(ch)) {
-                return false;
-            }
-
-            uniqueChars.add(ch);
-        }
-
-        return true;
-    }
-
+// WAP to remove Duplicates from a String
+public class Main{
     public static void main(String[] args) {
-        String input1 = "abcdefg";
-
-        if(hasUniqueCharacters(input1)){
-            System.out.println("Specified Input has unique characters");
-        }
-
+        String input = "Hello World!";
+        String result = removeDuplicates(input);
+        System.out.println("String after removing duplicates: " + result);
     }
 
+    public static String removeDuplicates(String str) {
+
+        LinkedHashSet<Character> set = new LinkedHashSet<>();
+
+        char[] chars = str.toCharArray();
+
+        for (char c : chars) {
+            set.add(c);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (Character character : set) {
+            sb.append(character);
+        }
+
+        return sb.toString();
+    }
 }
+
